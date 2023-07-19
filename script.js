@@ -71,5 +71,18 @@ ctx.stroke();
 
 // add the point correspoding to the complex number on the slider
 function makePoint() {
-
+    let x = realSlider.value;
+    let y = compSlider.value;
+    console.log(realSlider.value, compSlider.value);
 }
+
+function resetValues() {
+    realSlider.value = 0;
+    compSlider.value = 0;
+    let realValue = document.getElementById("realValue");
+    realValue.innerHTML = 0;
+    let compValue = document.getElementById("compValue");
+    compValue.innerHTML = 0;
+}
+
+makePoint();
