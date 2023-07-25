@@ -38,6 +38,7 @@ function invCompNum(num) {
     let b = -1*(num.b/sqr);
     return new CompNum(a,b);
 }
+
 // make slider functionality
 var realSlider = document.getElementById("realPart");
 var realOutput = document.getElementById("realValue");
@@ -57,6 +58,8 @@ compSlider.oninput = function() {
 // make canvas
 const canvas = document.getElementById("myCanvas");
 const ctx = canvas.getContext("2d");
+// ctx.fillStyle = "#abffa5";
+// ctx.fillRect(0, 0, 200, 200);
 
 // add x-y axes
 ctx.moveTo(100, 100);
@@ -69,20 +72,31 @@ ctx.lineTo(0, 100);
 ctx.stroke();
 
 
-// add the point correspoding to the complex number on the slider
+// add the point corresponding to the complex number on the slider
 function makePoint() {
     let x = realSlider.value;
     let y = compSlider.value;
+    ctx.beginPath();
+    ctx.arc(x, y, 5, 0, 2 * Math.PI);
+    ctx.stroke(); 
     console.log(realSlider.value, compSlider.value);
 }
 
-function resetValues() {
+const resetButton = document.querySelector('[reset]')
+resetButton.addEventListener("click", (event) => {
     realSlider.value = 0;
     compSlider.value = 0;
     let realValue = document.getElementById("realValue");
     realValue.innerHTML = 0;
     let compValue = document.getElementById("compValue");
     compValue.innerHTML = 0;
-}
+});
 
-makePoint();
+// function resetValues() {
+//     realSlider.value = 0;
+//     compSlider.value = 0;
+//     let realValue = document.getElementById("realValue");
+//     realValue.innerHTML = 0;
+//     let compValue = document.getElementById("compValue");
+//     compValue.innerHTML = 0;
+// }
